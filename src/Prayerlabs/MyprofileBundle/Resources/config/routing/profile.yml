@@ -1,0 +1,3 @@
+prayerlabs_profile:
+    pattern:  /
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:index" }

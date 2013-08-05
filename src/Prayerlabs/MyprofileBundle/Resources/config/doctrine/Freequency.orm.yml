@@ -1,0 +1,30 @@
+Prayerlabs\MyprofileBundle\Entity\Freequency:
+  type: entity
+  table: freequency
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    type:
+     type: string
+     columnDefinition: ENUM('daily','weekly','fort-nightly','monthly')
+  manyToOne:
+    accounts:
+      targetEntity: Accounts
+      inversedBy: freequency
+      joinColumn:
+        name: parent_account_id
+        referencedColumnName: id
+    accounts:
+      targetEntity: Accounts
+      inversedBy: freequency
+      joinColumn:
+        name: child_account_id
+        referencedColumnName: id
+    posts:
+      targetEntity: Posts
+      inversedBy: prayed
+      joinColumn:
+        name: post_id
+        referencedColumnName: id

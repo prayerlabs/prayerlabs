@@ -1,0 +1,30 @@
+prayerlabs_prayed:
+    pattern:  /
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Prayed:index" }
+
+prayerlabs_prayed_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Prayed:show" }
+
+prayerlabs_prayed_new:
+    pattern:  /new
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Prayed:new" }
+
+prayerlabs_prayed_create:
+    pattern:  /create
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Prayed:create" }
+    requirements: { _method: post }
+
+prayerlabs_prayed_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Prayed:edit" }
+
+prayerlabs_prayed_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Prayed:update" }
+    requirements: { _method: post|put }
+
+prayerlabs_prayed_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Prayed:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,236 @@
+/*		Default Layout: 992px.   */
+	
+	.wrapper{
+		width: 960px;
+		transition:all 0.6s ease 0s;
+		-moz-transition:all 0.6s ease 0s;
+		-webkit-transition:all 0.6s ease 0s;
+		-o-transition:all 0.6s ease 0s;
+	}
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+		width: 900px;
+	}
+	.sign{
+		width: 600px;
+	}
+	.signButtons{
+		width: 556px;
+	}
+	.register, .cancel{
+		width: 275px;
+	}
+	.time h2{
+		font-size: 28px;
+	}
+	.authorName{
+		width: 835px;
+	}
+	.authorName h2{
+		font-size: 35px;
+	}
+	.authorImage{
+		width: 65px;
+		float: left;
+	}
+	.commentContent{
+		float: left;
+		margin-left: 20px;
+	}
+	#commentBox{
+		width: 300px;
+	}
+	.addTo{
+		width: 930px;
+	}
+	.addPray, .addComment{
+		width: 447px;
+	}
+	.addPray{
+		background: url(../images/add-pray.png) 160px center no-repeat #f3f3f3;
+	}
+	.addComment{
+		background: url(../images/add-comment.png) 130px center no-repeat #f3f3f3;
+	}
+
+/*		Tablet Layout: 768px.  */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	
+	.wrapper{
+		max-width: 760px;
+		transition:all 0.6s ease 0s;
+		-moz-transition:all 0.6s ease 0s;
+		-webkit-transition:all 0.6s ease 0s;
+		-o-transition:all 0.6s ease 0s;
+	}
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+		width: 700px;
+	}
+	.signButtons{
+		width: 556px;
+	}
+	.register, .cancel{
+		width: 275px;
+	}
+	.sign{
+		width: 400px;
+	}
+	.time h2{
+		font-size: 28px;
+	}
+	.authorName{
+		width: 600px;
+	}
+	.authorName h2{
+		font-size: 35px;
+	}
+	.authorImage{
+		width: 65px;
+		float: left;
+	}
+	.commentContent{
+		float: left;
+		margin-left: 20px;
+	}
+	#commentBox{
+		width: 300px;
+	}
+	.addTo{
+		width: 730px;
+	}
+	.addPray, .addComment{
+		width: 347px;
+	}
+	.addPray{
+		background: url(../images/add-pray.png) 120px center no-repeat #f3f3f3;
+	}
+	.addComment{
+		background: url(../images/add-comment.png) 90px center no-repeat #f3f3f3;
+	}
+}
+
+
+
+/*		Mobile Layout: 320px.  */
+
+@media only screen and (max-width: 767px) {
+	
+	.wrapper{
+		max-width: 300px;
+		transition:all 0.6s ease 0s;
+		-moz-transition:all 0.6s ease 0s;
+		-webkit-transition:all 0.6s ease 0s;
+		-o-transition:all 0.6s ease 0s;
+	}
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+		width: 260px;
+	}
+	.sign{
+		width: 200px;
+	}
+	.signButtons{
+		width: 230px;
+	}
+	.register, .cancel{
+		width: 230px;
+		display: block;
+		margin: auto;
+		margin-bottom: 10px;
+	}
+	.time h2{
+		font-size: 26px;
+	}
+	.authorName{
+		width: 135px;
+	}
+	.authorImage{
+		width: 65px;
+		float: left;
+	}
+	.authorName h2{
+		font-size: 25px;
+	}
+	.commentContent{
+		margin-left: 0px;
+		margin-top: 20px;
+		clear: both;
+	}
+	#commentBox{
+		width: 210px;
+	}
+	.addTo{
+		width: 270px;
+	}
+	.addPray, .addComment{
+		width: 252px;
+	}
+	.addPray{
+		background: url(../images/add-pray.png) 75px center no-repeat #f3f3f3;
+	}
+	.addComment{
+		background: url(../images/add-comment.png) 45px center no-repeat #f3f3f3;
+	}
+}
+
+
+
+/*		Wide Mobile Layout: 480px.  */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+	.wrapper{
+		max-width: 440px;
+		transition:all 0.6s ease 0s;
+		-moz-transition:all 0.6s ease 0s;
+		-webkit-transition:all 0.6s ease 0s;
+		-o-transition:all 0.6s ease 0s;
+	}
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+		width: 360px;
+	}
+	.sign{
+		width: 200px;
+	}
+	.signButtons{
+		width: 275px;
+	}
+	.register, .cancel{
+		width: 275px;
+		display: block;
+		margin: auto;
+		margin-bottom: 10px;
+	}
+	.time h2{
+		font-size: 28px;
+	}
+	.authorName{
+		width: 280px;
+	}
+	.authorName h2{
+		font-size: 35px;
+	}
+	.authorImage{
+		width: 65px;
+		float: left;
+	}
+	.commentContent{
+		margin-left: 0px;
+		margin-top: 20px;
+		clear: both;
+	}
+	#commentBox{
+		width: 300px;
+	}
+	.addTo{
+		width: 410px;
+	}
+	.addPray, .addComment{
+		width: 392px;
+	}
+	.addPray{
+		background: url(../images/add-pray.png) 140px center no-repeat #f3f3f3;
+	}
+	.addComment{
+		background: url(../images/add-comment.png) 110px center no-repeat #f3f3f3;
+	}
+}

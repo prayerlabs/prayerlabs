@@ -1,0 +1,4 @@
+prayerlabs_myprofile:
+    resource: "@PrayerlabsMyprofileBundle/Resources/config/routing.yml"
+    prefix:   /
+

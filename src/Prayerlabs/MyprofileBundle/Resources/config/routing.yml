@@ -1,0 +1,39 @@
+prayerlabs_myprofile_login:
+    resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/login.yml"
+    prefix: /login/
+
+prayerlabs_myprofile_profile:
+    resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/profile.yml"
+    prefix: /profile
+
+PrayerlabsMyprofileBundle_prayerlabs_accounts:
+        resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/accounts.yml"
+        prefix:   /prayerlabs_accounts
+
+PrayerlabsMyprofileBundle_prayerlabs_comments:
+        resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/comments.yml"
+        prefix:   /prayerlabs_comments
+
+PrayerlabsMyprofileBundle_prayerlabs_freequency:
+        resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/freequency.yml"
+        prefix:   /prayerlabs_freequency
+
+PrayerlabsMyprofileBundle_prayerlabs_posts:
+        resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/posts.yml"
+        prefix:   /prayerlabs_posts
+
+PrayerlabsMyprofileBundle_prayerlabs_prayed:
+        resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/prayed.yml"
+        prefix:   /prayerlabs_prayed
+
+PrayerlabsMyprofileBundle_prayerlabs_systems:
+        resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/systems.yml"
+        prefix:   /prayerlabs_systems
+
+PrayerlabsMyprofileBundle_prayerlabs_systems_accessed:
+        resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/systemsaccessed.yml"
+        prefix:   /prayerlabs_systems_accessed
+
+prayerlabs_myprofile_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: PrayerlabsMyprofileBundle:Default:index }

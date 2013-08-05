@@ -1,0 +1,24 @@
+Prayerlabs\MyprofileBundle\Entity\SystemsAccessed:
+  type: entity
+  table: systems_accessed
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    last_login:
+      type: datetime
+      nullable: true
+  manyToOne:
+    systems:
+      targetEntity: Systems
+      inversedBy: systems_accessed
+      joinColumn:
+        name: system_id
+        referencedColumnName: id
+    accounts:
+      targetEntity: Accounts
+      inversedBy: systems_accessed
+      joinColumn:
+        name: account_id
+        referencedColumnName: id

@@ -1,0 +1,30 @@
+prayerlabs_comments:
+    pattern:  /
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Comments:index" }
+
+prayerlabs_comments_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Comments:show" }
+
+prayerlabs_comments_new:
+    pattern:  /new
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Comments:new" }
+
+prayerlabs_comments_create:
+    pattern:  /create
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Comments:create" }
+    requirements: { _method: post }
+
+prayerlabs_comments_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Comments:edit" }
+
+prayerlabs_comments_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Comments:update" }
+    requirements: { _method: post|put }
+
+prayerlabs_comments_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Comments:delete" }
+    requirements: { _method: post|delete }

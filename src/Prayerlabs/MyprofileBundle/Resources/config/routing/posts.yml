@@ -1,0 +1,33 @@
+prayerlabs_posts:
+    pattern:  /
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:index" }
+
+prayerlabs_posts_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:show" }
+
+prayerlabs_posts_new:
+    pattern:  /new
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:new" }
+
+prayerlabs_posts_create:
+    pattern:  /create
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:create" }
+    requirements: { _method: post }
+save_comment:
+    pattern:  /saveComment
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:saveComment" }
+    requirements: { _method: post }
+prayerlabs_posts_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:edit" }
+
+prayerlabs_posts_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:update" }
+    requirements: { _method: post|put }
+
+prayerlabs_posts_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:delete" }
+    requirements: { _method: post|delete }

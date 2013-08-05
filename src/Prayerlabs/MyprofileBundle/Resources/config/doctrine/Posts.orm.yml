@@ -1,0 +1,36 @@
+Prayerlabs\MyprofileBundle\Entity\Posts:
+  type: entity
+  table: posts
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    description:
+      type: text
+    created_at:
+      type: datetime
+    updated_at:
+      type: datetime
+    expires_at:
+      type: datetime
+      nullable: true
+  oneToMany:
+    comments:
+      targetEntity: Comments
+      mappedBy: posts
+    prayed:
+      targetEntity: Prayed
+      mappedBy: posts
+    freequency:
+      targetEntity: Freequency
+      mappedBy: posts
+  manyToOne:
+    accounts:
+      targetEntity: Accounts
+      inversedBy: posts
+      joinColumn:
+        name: account_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ setExpiresAtValue, setUpdatedAtValue, setCreatedAtValue ]

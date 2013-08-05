@@ -1,0 +1,6 @@
+prayerlabs_login:
+    pattern:  /
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Login:index" }
+prayerlabs_validate:
+    pattern:  /validator
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Login:validator" }

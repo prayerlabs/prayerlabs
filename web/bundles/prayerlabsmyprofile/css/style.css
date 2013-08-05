@@ -1,0 +1,340 @@
+/*CSS Reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url('../fonts/351837159-HelveticaNeue-Bold.eot');
+    src: url('../fonts/351837159-HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/351837159-HelveticaNeue-Bold.svg#Helvetica Neue') format('svg'),
+    url('../fonts/351837159-HelveticaNeue-Bold.woff') format('woff'),
+    url('../fonts/351837159-HelveticaNeue-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.clearfix{
+	overflow: hidden;
+}
+.wrapper{
+	margin: auto;
+	background: #000;
+}
+.topWrapper{
+	height: 40px;
+	background: #000;
+}
+.topWrapper img{
+	float: left;
+}
+.time{
+	width: 170px;
+	margin: auto;
+	padding-top: 5px;
+}
+.time h2{
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	color: #fff;
+	font-weight: bold;
+}
+.iconNetwork{
+	width: 50px;
+	float: left;
+	padding: 7px 0px 0px 5px;
+}
+.lockCharge{
+	width: 100px;
+	float: right;
+	margin-top: -30px;
+}
+.lockCharge img:last-of-type{
+	margin-top: 5px;
+	margin-left: 15px;
+}
+.edit{
+	width: 45px;
+}
+.mainWrapper{
+	background: #fc6238;
+}
+.logo{
+	display: block;
+	margin: 140px auto 50px auto;
+}
+#loginForm{}
+#email, #regEmail, #regPassword, #name, #community{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: none;
+}
+#regEmail, #regPassword, #community{
+	margin-top: -2px !important;
+}
+#password{
+	border-top: 1px solid #ddd !important;
+	border: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#community{
+	border: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+	height: 80px;
+	padding: 10px;
+	display: block;
+	margin: auto;
+	font-size: 28px;
+}
+.logIn{
+	height: auto !important;
+}
+.signButtons{
+	margin: 20px auto;
+}
+.register, .cancel{
+	height: 35px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	border: 2px solid #e3370b;
+	background: #373737;
+	color: #fff;
+	border: 2px solid #000;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	line-height: 14px;
+}
+.logIn{
+	margin-top: 15px;
+	background: #373737;
+	color: #fff;
+	border: 2px solid #000;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+}
+.logIn:hover{
+	background: #353535;
+}
+.sign{
+	margin: 105px auto 60px auto;
+	text-align: center;
+	border: 2px solid #e3370b;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.sign a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 30px;
+	font-weight: bold;
+}
+.authorWrapper{
+	background: #fc6238;
+	height: 65px;
+}
+.authorWrapper img{
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.authorName{
+	float: left;
+	margin: 15px auto;
+}
+.authorName h2{
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+}
+.mainTop{
+	background: url(../images/author-bg-wide.png) no-repeat;
+	height: 520px;
+}
+.mainTop img{
+	display: block;
+	margin: auto;
+	padding: 50px 0px 30px 0px;
+}
+.mainTop h3, .mainTop h2{
+	text-align: center;
+	color: #fff;
+}
+.mainTop h2{
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 50px;
+	line-height: 70px;
+}
+.mainTop h3{
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	line-height: 40px;
+}
+.mainMiddle{
+	background: #ffffff;
+	padding: 10px;
+}
+.middleLeft{
+	float: left;
+}
+.middleRight{
+	float: right;
+}
+.mainBottomWrapper{
+	padding: 20px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 10px 5px 5px #ddd;
+}
+.mainBottom{
+	background: #e3e2e2;
+	padding: 15px;
+}
+.mainBottom p{
+	font-size: 20px;
+	line-height: 30px;
+}
+.mainBottom p a, .addTo a{
+	text-decoration: none;
+	color: #fc6238;
+	margin-right: 5px;
+}
+.addTo{
+	margin: 10px -20px -20px
+}
+.addPray, .addComment{
+	display: inline-block;
+	background: #f3f3f3;
+	padding: 10px 8px;
+	text-align: center;
+	color: #969696!important;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	margin: 0px !important;
+	border: 1px solid #e3e2e2;
+}
+.mainBottomLeft{
+	float: left;
+}
+.mainBottomWrapperTop{
+	height: 100px;
+	margin-bottom: 25px;
+}
+.status{
+	margin-top: 20px;
+	clear: both;
+}
+.mainBottomLeft img{
+	width: 90px;
+	float: left;
+	margin: 0px 20px 10px 0px;
+}
+.authorMeta{
+	width: 200px;
+	float: left;
+}
+.authorMeta h2{
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	color: #fc6238;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+.authorMeta .days{
+	color: #ddd;
+	font-size: 20px;
+}
+.mainBottomRight{
+	width: 40px;
+	float: right;
+}
+.mainBottomRight ul{
+	margin-top: 20px;
+} 
+.mainBottomRight ul li{
+	float: left;
+	margin-right: 5px;
+}
+.comments{
+	margin: 15px;
+}
+.singleComment{
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 70px;
+	margin-bottom: 10px;
+	clear: both;
+}
+.commentContent .days{
+	color: #999;
+	font-size: 15px;
+}
+.commentAurhorName{
+	color: #fc6238;
+	font-weight: bold;
+}
+#commentForm{ /*Developer should change form "display" value to make form work*/
+	margin-top: 20px;
+	display: none;
+}
+#commentForm input, #commentForm label{
+	display: block;
+}
+#commentBox{
+	max-width: 300px;
+	height: 150px 
+	padding: 3px 10px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+	margin: 10px 0px;
+}
+#commentForm input[type="submit"], #commentForm input[type="reset"]{
+	display: inline;
+	padding: 3px 10px;
+}

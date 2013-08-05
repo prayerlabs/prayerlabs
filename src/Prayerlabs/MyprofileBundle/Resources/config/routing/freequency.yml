@@ -1,0 +1,30 @@
+prayerlabs_freequency:
+    pattern:  /
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Freequency:index" }
+
+prayerlabs_freequency_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Freequency:show" }
+
+prayerlabs_freequency_new:
+    pattern:  /new
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Freequency:new" }
+
+prayerlabs_freequency_create:
+    pattern:  /create
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Freequency:create" }
+    requirements: { _method: post }
+
+prayerlabs_freequency_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Freequency:edit" }
+
+prayerlabs_freequency_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Freequency:update" }
+    requirements: { _method: post|put }
+
+prayerlabs_freequency_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Freequency:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Holyjo - Profile</title>	
+	<link type="text/css" rel="stylesheet" href="{{ asset('bundles/prayerlabsmyprofile/css/style.css') }}">
+	<link type="text/css" rel="stylesheet" href="{{ asset('bundles/prayerlabsmyprofile/css/responsive.css') }}">
+	<link rel="shortcut icon" href="{{ asset('bundles/prayerlabsmyprofile/images/favicon.ico') }}">
+	<script type="text/javascript" src="{{ asset('assets/js/vendor/jquery-1.9.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/custom/handler.js') }}"></script>
+	<!-- HTML5 shim for IE backwards compatibility -->
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+	
+	<div class="wrapper clearfix">
+		<div class="topWrapper clearfix">
+			<div class="iconNetwork clearfix">
+				<img src="{{ asset('bundles/prayerlabsmyprofile/images/network-indicator.png') }}" alt="Network Indicator" />
+			</div>
+			<div class="time clearfix">
+				<h2>4:20 PM</h2>
+			</div>
+			<div class="lockCharge clearfix">
+			  	<img src="{{ asset('bundles/prayerlabsmyprofile/images/lock.png') }}" alt="Lock" />
+				<img src="{{ asset('bundles/prayerlabsmyprofile/images/charge-indicator.png') }}" alt="Chrage Indicator" />
+			</div>
+		</div>
+		<div class="authorWrapper clearfix">
+			<a href="#"><img src="{{ asset('bundles/prayerlabsmyprofile/images/left-arrow.png') }}" alt="Left Arrow" /></a>
+			<div class="authorName clearfix"><h2>{{ user.name }}</h2></div>
+			<a href="#"><img class="edit" src="{{ asset('bundles/prayerlabsmyprofile/images/edit.png') }}" alt="Edit Button" /></a>
+		</div>
+		<div class="mainWrapper clearfix">
+			<div class="mainTop clearfix">
+				<img src="{{ asset('bundles/prayerlabsmyprofile/images/author-pic.png') }}" alt="Ben Heap" />
+				<h2>{{ user.name }}</h2>
+				<h3>{{ user.place }}</h3>
+				<h3>{{ user.worksat }}</h3>
+			</div>
+			<div class="mainMiddle clearfix">
+				<div class="middleLeft clearfix">
+					<a href="#"><img src="{{ asset('bundles/prayerlabsmyprofile/images/calender.png') }}" alt="Calender" /></a>
+				</div>
+				<div class="middleRight clearfix">
+					<a href="#"><img src="{{ asset('bundles/prayerlabsmyprofile/images/active.png') }}" alt="Active" /></a>
+				</div>
+			</div>
+			<div class="mainBottom clearfix">
+				<div class="mainBottomWrapper clearfix">
+					<div class="mainBottomWrapperTop">
+						<div class="mainBottomLeft clearfix">
+							<img src="{{ asset('bundles/prayerlabsmyprofile/images/author-pic-small.png') }}" class="clearfix" alt="Ben Heap" />
+							<div class="authorMeta clearfix">
+								<h2>{{ user.name }}</h2>
+								<h3 class="days clearfix">2 Days ago</h3>
+							</div>
+						</div>
+						<div class="mainBottomRight clearfix">
+							<ul>
+								<li><a href="#"><img src="{{ asset('bundles/prayerlabsmyprofile/images/indicator.png') }}" alt="Indicator"></a></li>
+								<li><a href="#"><img src="{{ asset('bundles/prayerlabsmyprofile/images/indicator.png') }}" alt="Indicator"></a></li>
+								<li><a href="#"><img src="{{ asset('bundles/prayerlabsmyprofile/images/indicator.png') }}" alt="Indicator"></a></li>
+							</ul>
+						</div>
+					</div>
+					{% set post = posts[0] %}
+					<p><!--Had a great conversation at  work todat with a guy who was asking me questios about Jesus. Was amazing. Raaly want more opportunities to talk this guy.-->
+					{{ post.description }}					
+					</p>
+					<div class="comments">
+					{% set comments = post.getComments() %}
+					{% set authorList = '' %}
+					{% for comment in comments %}
+						<div class="singleComment">
+							<div class="authorImage">
+								<img src="{{ asset('bundles/prayerlabsmyprofile/images/jono.png') }}" alt="{{comment.accounts.name}}" />
+							</div>
+							<div class="commentContent">
+								<p><span class="commentAurhorName">{{comment.accounts.name}}</span> <!--Oh man! So sorry. Praying for the all the family right now.-->
+								{{comment.description}}</p>
+								<p class="days clearfix">2 Days ago</p>
+							</div>
+						</div>
+						{% set authorList = authorList~comment.accounts.name~',' %}
+					{%endfor%}
+						<!--
+						<div class="singleComment">
+							<div class="authorImage">
+								<img src="{{ asset('bundles/prayerlabsmyprofile/images/angela.png') }}" alt="Angela" />
+							</div>
+							<div class="commentContent">
+								<p><span class="commentAurhorName">Angela Haythorpy</span> Praying mate!</p>
+								<p class="days clearfix">2 Days ago</p>
+							</div>
+						</div>
+						-->
+					</div>
+					<p class="status">Already <a href="#">19 Prayed</a> - <a href="#">{{comments|length}} Comments</a> - <a href="#">{{authorList}}<!--Tom Allsop, Matt...--></a></p>
+					<p class="addTo"><a class="addPray" href="#">Pray</a><a class="addComment" href="javascript:void(0)">Comments</a></p>
+					<form id="commentForm" action="#" method="post" accept-charset="utf-8">
+						<label for="commentBox">Write a comment:</label>
+						<textarea name="commentBox" id="commentBox" placeholder="Enter your comment" rows="8" cols="40" postid="{{post.id}}"></textarea>	
+					   	<p><input type="button" value="Submit Comment" class="submitButton" /> <input type="reset" value="Clear"/></p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	{% set user = app.session.get('user') %}
+	
+		$('.addComment').click(function(){
+			$('#commentForm').toggle('slide');
+			
+			var n = $(document).height();
+			$('html, body').animate({ scrollTop: n },'50');
+
+		});
+		/*$('.commentForm textarea').focus(function(){
+		if($(this).val() == 'Post your comments here...')
+			$(this).val('');
+		});
+		$('.commentForm textarea').blur(function(){
+			if($(this).val() == '')
+				$(this).val('Post your comments here...');
+		});*/
+		$('.submitButton').click(function(){
+			var inputBox       = $(this).parents('#commentForm').find('textarea');
+			var idOfPost       = inputBox.attr('postid');
+			var valueOfComment = inputBox.val();
+			$.post('{{path('save_comment')}}', { postId: idOfPost, comment: valueOfComment }, function(){
+				$('#commentForm').toggle('slide');
+				inputBox.val('');
+			
+				//$('.comments').append("<div style='border-bottom:1px solid #fff'>"+valueOfComment+"</div>");
+				$('.comments').append('<div class="singleComment">\
+							<div class="authorImage">\
+								<img src="{{ asset('bundles/prayerlabsmyprofile/images/jono.png') }}" alt="{{user.name}}" />\
+							</div>\
+							<div class="commentContent">\
+								<p><span class="commentAurhorName">'+'{{user.name}}'+'</span>\
+								'+valueOfComment+'</p>\
+								<p class="days clearfix">recently</p>\
+							</div>\
+						</div>');
+				//alert('Comment posted successfully!');				
+			});
+		});
+	
+  </script>
+</body>
+</html>

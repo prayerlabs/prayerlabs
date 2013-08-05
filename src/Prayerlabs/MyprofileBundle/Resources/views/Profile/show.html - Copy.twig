@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="{{ asset('bundles/prayerlabsmyprofile/css/login.css') }}">
+  <style>
+    .likeabutton {
+        text-decoration: none; font: menu;
+        display: inline-block; padding: 2px 8px;
+        background: ButtonFace; color: ButtonText;
+        border-style: solid; border-width: 2px;
+        border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+    }
+  </style>
+  <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script type="text/javascript" src="{{ asset('assets/js/vendor/jquery-1.9.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/js/custom/handler.js') }}"></script>
+</head>
+<body>
+  <section class="container">
+    <div style="width:184px;height:36px;-webkit-border-radius: 99px 99px 0px 0px;-moz-border-radius: 99px 99px 0px 0px;border-radius: 99px 99px 0px 0px;border:7px solid #F0FBFF;background:rgba(225,227,227,0.4);-webkit-box-shadow: #B3B3B3 13px 13px 13px;-moz-box-shadow: #B3B3B3 13px 13px 13px; box-shadow: #B3B3B3 13px 13px 13px;color: #0CA3D2;padding-top:10px;text-align: center;"><span style="font-size: 23px;color: white;">My Profile</span></div>
+    <div style="background-color: white; height: auto;">
+      <div style="width:713px;height:25px;-webkit-border-radius: 0px 47px 52px 47px;-moz-border-radius: 0px 47px 52px 47px;border-radius: 0px 47px 52px 47px;border:5px solid #A3D7FF;background:rgba(57,102,227,0.8);-webkit-box-shadow: #B3B3B3 20px 20px 20px;-moz-box-shadow: #B3B3B3 20px 20px 20px; box-shadow: #B3B3B3 20px 20px 20px;color: white;padding-left: 12px;">
+        <b>Name:</b> {{ user.name }} &nbsp;&nbsp;&nbsp;<b>Place:</b> {{ user.place }} &nbsp;&nbsp;&nbsp;<b>Works At:</b> {{ user.worksat }}
+        <div style="float: right;padding-right: 22px;color: white;"><a id="add_post" style="cursor: pointer;">+ POST</a>
+        <a id="remove_post" style="cursor: pointer;display: none;">- POST</a>
+        </div>
+      </div>
+      <div id="add_post_form" style="padding: 20px;display: none;">
+        <h1>Whats in your mind :-<h1>
+        <textarea id="detail" name="detail" style="height: 100px;width: 600px;"></textarea><br/>
+        <button id="submit_post" name="submit_post" to="{{ path('prayerlabs_posts_create') }}">Submit Post</button>
+      </div>
+      <h1 style="padding: 20px;background:rgba(18,227,130,0.8);color: white;font-size: 24px;font-weight: bold;text-align: center;">Posts</h1>
+      <div style="overflow: scroll;height: 420px;">
+      {% for post in posts %}
+      <br/>
+      <div class="display_post" style="width:571px;height:auto;-webkit-border-radius: 18px;-moz-border-radius: 18px;border-radius: 18px;border:7px solid #FFFAFA;background-color:#E3E3E3;-webkit-box-shadow: #B3B3B3 5px 5px 5px;-moz-box-shadow: #B3B3B3 5px 5px 5px; box-shadow: #B3B3B3 5px 5px 5px;padding: 20px;">
+        {{ post.accounts.name }}: <label style="text-decoration: -moz-anchor-decoration;">{{ post.hourminvalue }}</label><br/><br/>
+        <p>{{ post.description }}</p><br/>
+        <a style="color: #0CA3D2; cursor: pointer;">* 0 Prayed</a>&nbsp;
+        <a style="color: #0CA3D2; cursor: pointer;">* 0 Comments</a><br/><br/>
+		<div class="loadComments" style="margin-bottom: 10px;">
+			
+		</div>
+        <a class="likeabutton" style="color: #0CA3D2; cursor: pointer;">Pray</a>&nbsp;
+        <a class="likeabutton addcomment" style="color: #0CA3D2; cursor: pointer;">Comment</a>
+		<div class="commentbox" style="display: none;">
+			<textarea name="commentBox{{post.id}}" id="comment_{{post.id}}" postid="{{post.id}}" rows="5" cols="30">Post your comments here...</textarea>
+			<input type="button" name="commentSubmit{{post.id}}" class="submitButton" value="Add Comment" />
+		</div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+	$(function(){
+		$('.addcomment').click(function(){
+			$(this).next('.commentbox').toggle('slide');
+		});
+		$('.commentbox textarea').focus(function(){
+		if($(this).val() == 'Post your comments here...')
+			$(this).val('');
+		});
+		$('.commentbox textarea').blur(function(){
+			if($(this).val() == '')
+				$(this).val('Post your comments here...');
+		});
+		$('.submitButton').click(function(){
+			var inputBox       = $(this).prev('textarea');
+			var idOfPost       = inputBox.attr('postid');
+			var valueOfComment = inputBox.val();
+			$.post('{{path('save_comment')}}', { postId: idOfPost, comment: valueOfComment }, function(){
+				$(inputBox).parent().toggle('slide');
+				inputBox.val('');
+			
+				$(inputBox).parent().siblings('.loadComments').append("<div style='border-bottom:1px solid #fff'>"+valueOfComment+"</div>");
+				alert('Comment posted successfully!');				
+			});
+		});
+	});
+  </script>
+</body>
+</html>

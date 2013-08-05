@@ -1,0 +1,29 @@
+Prayerlabs\MyprofileBundle\Entity\Comments:
+  type: entity
+  table: comments
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+   description:
+      type: text
+   created_at:
+      type: datetime
+   updated_at:
+      type: datetime
+  manyToOne:
+    accounts:
+      targetEntity: Accounts
+      inversedBy: comments
+      joinColumn:
+        name: account_id
+        referencedColumnName: id
+    posts:
+      targetEntity: Posts
+      inversedBy: comments
+      joinColumn:
+        name: post_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ setExpiresAtValue, setUpdatedAtValue, setCreatedAtValue ]

@@ -1,0 +1,70 @@
+Prayerlabs\MyprofileBundle\Entity\Accounts:
+  type: entity
+  table: accounts
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 255
+    place:
+      type: text
+      nullable: true
+    works_at:
+      type: text
+      nullable: true
+    email:
+      type: string
+      length: 255
+      unique: true
+    password:
+      type: string
+      length: 255
+    salt:
+      type: string
+      length: 255
+    enabled:
+      type: boolean
+    last_login:
+      type: datetime
+      nullable: true
+    token:
+      type: string
+      length: 255
+      nullable: true
+      unique: true
+    verification_requested_at:
+      type: datetime
+      nullable: true
+    password_requested_at:
+      type: datetime
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: true
+    created_from_system:
+      type: integer
+  oneToMany:
+    systems:
+      targetEntity: Systems
+      mappedBy: accounts
+    systems_accessed:
+      targetEntity: SystemsAccessed
+      mappedBy: accounts
+    comments:
+      targetEntity: Comments
+      mappedBy: accounts
+    prayed:
+      targetEntity: Prayed
+      mappedBy: accounts
+    freequency:
+      targetEntity: Freequency
+      mappedBy: accounts
+    posts:
+      targetEntity: Posts
+      mappedBy: accounts
+      cascade: ["persist", "merge"]
+  lifecycleCallbacks:
+    prePersist: [ setEnabledValue, setSaltValue, setCreatedAtValue, setPasswordValue ]
