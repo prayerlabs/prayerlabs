@@ -41,6 +41,12 @@ Prayerlabs\MyprofileBundle\Entity\Accounts:
     password_requested_at:
       type: datetime
       nullable: true
+    small_pic_name:
+      type: string
+      length: 255
+    bg_pic_name:
+      type: string
+      length: 255
     created_at:
       type: datetime
       nullable: true

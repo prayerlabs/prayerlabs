@@ -10,6 +10,10 @@ prayerlabs_posts_new:
     pattern:  /new
     defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:new" }
 
+prayerlabs_posts_add:
+    pattern:  /add
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:add" }
+
 prayerlabs_posts_create:
     pattern:  /create
     defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:create" }
@@ -17,6 +21,10 @@ prayerlabs_posts_create:
 save_comment:
     pattern:  /saveComment
     defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:saveComment" }
+    requirements: { _method: post }
+save_prayed:
+    pattern:  /savePray
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Posts:savePray" }
     requirements: { _method: post }
 prayerlabs_posts_edit:
     pattern:  /{id}/edit

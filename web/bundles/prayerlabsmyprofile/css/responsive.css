@@ -7,7 +7,7 @@
 		-webkit-transition:all 0.6s ease 0s;
 		-o-transition:all 0.6s ease 0s;
 	}
-	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community, #address{
 		width: 900px;
 	}
 	.sign{
@@ -22,10 +22,10 @@
 	.time h2{
 		font-size: 28px;
 	}
-	.authorName{
+	.authorName, .postName{
 		width: 835px;
 	}
-	.authorName h2{
+	.authorName h2, .postName{
 		font-size: 35px;
 	}
 	.authorImage{
@@ -51,6 +51,65 @@
 	.addComment{
 		background: url(../images/add-comment.png) 130px center no-repeat #f3f3f3;
 	}
+	.viewTo, .addPhoto{
+		width: 448px;
+	}
+	.viewTo{
+		background: url(../images/eye.png) 135px center no-repeat #f3f3f3;
+	}
+	.addPhoto{
+		background: url(../images/camera.png) 150px center no-repeat #f3f3f3;
+	}
+	#postContent{
+		width: 938px !important;
+		height: 235px !important;
+	}
+	#postSubmit{
+		width: 400px;
+	}
+	.buttonColumnFirst {
+		width: 705px;
+	}
+	.buttonColumnSecond{
+		width: 655px;
+	}
+	.buttonColumnThird{
+		width: 647px;
+	}
+	.buttonColumnFourth{
+		width: 625px;
+	}
+	.buttonCross{
+		position: relative;
+		top: 30px;
+	}
+	#editProfile{
+		width: 850px;
+	}
+	.editProfileTitle{
+		width: 960px !important;
+	}
+	#editName, #editEmail, #editPassword{
+		width: 400px;
+	}
+	#editProfile [name="firstName"]{
+		margin-left: 95px;
+	}
+	#editProfile [name="lastName"]{
+		margin: 15px 0px 0px 142px;
+	}
+	#editEmail, #editPassword{
+		margin-left: 98px;
+	}
+	#editPassword{
+		margin-left: 69px !important;
+	}
+	#loginForm label[for="addPhoto"]{
+		margin-left: 20px;
+	}
+	#addPhoto{
+		margin: 20px;
+	}
 
 /*		Tablet Layout: 768px.  */
 
@@ -63,7 +122,7 @@
 		-webkit-transition:all 0.6s ease 0s;
 		-o-transition:all 0.6s ease 0s;
 	}
-	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community, #address{
 		width: 700px;
 	}
 	.signButtons{
@@ -78,10 +137,10 @@
 	.time h2{
 		font-size: 28px;
 	}
-	.authorName{
+	.authorName, .postName{
 		width: 600px;
 	}
-	.authorName h2{
+	.authorName h2, .postName h2{
 		font-size: 35px;
 	}
 	.authorImage{
@@ -107,6 +166,66 @@
 	.addComment{
 		background: url(../images/add-comment.png) 90px center no-repeat #f3f3f3;
 	}
+	.viewTo, .addPhoto{
+		width: 348px;
+		float: left;
+	}
+	.viewTo{
+		background: url(../images/eye.png) 90px center no-repeat #f3f3f3;
+	}
+	.addPhoto{
+		background: url(../images/camera.png) 100px center no-repeat #f3f3f3;
+	}
+	#postContent{
+		width: 738px !important;
+		height: 235px !important;
+	}	
+	#postSubmit{
+		width: 400px;
+	}
+	.buttonColumnFirst {
+		width: 705px;
+	}
+	.buttonColumnSecond{
+		width: 655px;
+	}
+	.buttonColumnThird{
+		width: 647px;
+	}
+	.buttonColumnFourth{
+		width: 625px;
+	}
+	.buttonCross{
+		position: relative;
+		top: 30px;
+	}
+	#editProfile{
+		width: 650px;
+	}
+	.editProfileTitle{
+		width: 760px !important;
+	}
+	#editName, #editEmail, #editPassword{
+		width: 400px;
+	}
+	#editProfile [name="firstName"]{
+		margin-left: 95px;
+	}
+	#editProfile [name="lastName"]{
+		margin: 15px 0px 0px 142px;
+	}
+	#editEmail, #editPassword{
+		margin-left: 98px !important;
+	}
+	#editPassword{
+		margin-left: 69px !important;
+	}
+	#loginForm label[for="addPhoto"]{
+		margin-left: 20px;
+	}
+	#addPhoto{
+		margin: 20px;
+	}
 }
 
 
@@ -122,8 +241,11 @@
 		-webkit-transition:all 0.6s ease 0s;
 		-o-transition:all 0.6s ease 0s;
 	}
-	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community, #address{
 		width: 260px;
+	}
+	#address{
+		margin-bottom: 20px;
 	}
 	.sign{
 		width: 200px;
@@ -140,14 +262,14 @@
 	.time h2{
 		font-size: 26px;
 	}
-	.authorName{
+	.authorName, .postName{
 		width: 135px;
 	}
 	.authorImage{
 		width: 65px;
 		float: left;
 	}
-	.authorName h2{
+	.authorName h2, .postName h2{
 		font-size: 25px;
 	}
 	.commentContent{
@@ -165,10 +287,69 @@
 		width: 252px;
 	}
 	.addPray{
-		background: url(../images/add-pray.png) 75px center no-repeat #f3f3f3;
+		background: url(../images/add-pray.png) 70px center no-repeat #f3f3f3;
 	}
 	.addComment{
 		background: url(../images/add-comment.png) 45px center no-repeat #f3f3f3;
+	}
+	.viewTo, .addPhoto{
+		width: 268px;
+	}
+	.viewTo{
+		background: url(../images/eye.png) 50px center no-repeat #f3f3f3;
+	}
+	.addPhoto{
+		background: url(../images/camera.png) 70px center no-repeat #f3f3f3;
+	}
+	#postContent{
+		width: 278px !important;
+		height: 235px !important;
+	}
+	#postSubmit{
+		width: 280px;
+	}
+	.buttonColumnFirst {
+		width: 280px;
+	}
+	.buttonColumnSecond{
+		width: 280px;
+	}
+	.buttonColumnThird{
+		width: 215px;
+	}
+	.buttonColumnFourth{
+		width: 240px;
+	}
+	.buttonCross{
+		position: relative;
+		top: 30px;
+	}
+	#editProfile{
+		width: 285px;
+	}
+	.editProfileTitle{
+		width: 300px !important;
+	}
+	#editName, #editEmail, #editPassword{
+		width: 190px;
+	}
+	#editProfile [name="firstName"]{
+		margin-left: 26px;
+	}
+	#editProfile [name="lastName"]{
+		margin: 15px 0px 0px 74px;
+	}
+	#editEmail, #editPassword{
+		margin-left: 28px;
+	}
+ 	#editPassword{
+ 		margin-left: -1px !important;
+ 	}
+  	#loginForm label[for="addPhoto"]{
+		margin-left: 20px;
+	}
+	#addPhoto{
+		margin: 20px;
 	}
 }
 
@@ -185,7 +366,7 @@
 		-webkit-transition:all 0.6s ease 0s;
 		-o-transition:all 0.6s ease 0s;
 	}
-	#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+	#email, #regEmail, #regPassword, #password, .logIn, #name, #community, #address{
 		width: 360px;
 	}
 	.sign{
@@ -203,10 +384,10 @@
 	.time h2{
 		font-size: 28px;
 	}
-	.authorName{
+	.authorName, .postName{
 		width: 280px;
 	}
-	.authorName h2{
+	.authorName h2, .postName h2{
 		font-size: 35px;
 	}
 	.authorImage{
@@ -231,6 +412,67 @@
 		background: url(../images/add-pray.png) 140px center no-repeat #f3f3f3;
 	}
 	.addComment{
-		background: url(../images/add-comment.png) 110px center no-repeat #f3f3f3;
+		background: url(../images/add-comment.png) 120px center no-repeat #f3f3f3;
+	}
+	.viewTo, .addPhoto{
+		width: 408px;
+	}
+	#postContent{
+		width: 418px !important;
+		height: 235px !important;
+	}
+	#postSubmit{
+		width: 400px;
+	}
+	.buttonColumnFirst {
+		width: 350px;
+	}
+	.buttonColumnSecond{
+		width: 350px;
+	}
+	.buttonColumnThird{
+		width: 285px;
+	}
+	.buttonColumnFourth{
+		width: 260px;
+		margin-top: -100px;
+	}
+	.viewTo{
+		background: url(../images/eye.png) 110px center no-repeat #f3f3f3;
+	}
+	.addPhoto{
+		background: url(../images/camera.png) 130px center no-repeat #f3f3f3;
+	}
+	.buttonCross{
+		position: relative;
+		top: 10px;
+		left: 190px;
+	}
+	#editProfile{
+		width: 400px;
+	}
+	.editProfileTitle{
+		width: 460px !important;
+	}
+	#editName, #editEmail, #editPassword{
+		width: 290px;
+	}
+	#editProfile [name="firstName"]{
+		margin-left: 40px;
+	}
+	#editProfile [name="lastName"]{
+		margin: 15px 0px 0px 87px;
+	}
+	#editEmail, #editPassword{
+		margin-left: 43px;
+	}
+ 	#editPassword{
+ 		margin-left: 14px !important;
+ 	}
+  	#loginForm label[for="addPhoto"]{
+		margin-left: 33px;
+	}
+	#addPhoto{
+		margin: 30px;
 	}
 }

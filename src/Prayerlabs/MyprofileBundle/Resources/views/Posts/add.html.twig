@@ -1,0 +1,15 @@
+{% extends 'PrayerlabsMyprofileBundle::layout.html.twig' %}
+{% block body %}
+    <div class="postTopWrapper clearfix">
+			<a href="{{path('prayerlabs_profile')}}"><img src="{{ asset('bundles/prayerlabsmyprofile/images/left-arrow.png') }}" alt="Left Arrow" /></a>
+			<div class="postName clearfix"><h2>Post Update</h2></div>
+			<a href="#"><img class="edit" src="{{ asset('bundles/prayerlabsmyprofile/images/cross.png') }}" alt="Cross Button" /></a>
+    </div>
+    <div class="postWrapper clearfix">
+            <form id="addPost" action="{{ path('prayerlabs_posts_create') }}" method="post">
+                    <textarea name="description" id="postContent" cols="30" rows="10" placeholder="Write your update"></textarea>
+                    <p class="formTopButton"><a class="viewTo" href="#">Everyone <img class="downArraw" src="{{ asset('bundles/prayerlabsmyprofile/images/down-arrow.png') }}" alt="" /></a><a class="addPhoto" href="#">Add Photo</a></p>
+                    <input type="submit" id="postSubmit" value="Post" />
+            </form>
+    </div>
+{% endblock %}

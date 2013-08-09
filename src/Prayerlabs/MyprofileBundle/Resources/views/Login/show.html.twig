@@ -1,51 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Holyjo - Log In</title>	
-	<link type="text/css" rel="stylesheet" href="{{ asset('bundles/prayerlabsmyprofile/css/style.css') }}">
-	<link type="text/css" rel="stylesheet" href="{{ asset('bundles/prayerlabsmyprofile/css/responsive.css') }}">
-	<link rel="shortcut icon" href="{{ asset('bundles/prayerlabsmyprofile/images/favicon.ico') }}">
-	
-	<!-- HTML5 shim for IE backwards compatibility -->
-	<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-<body>
-	
-	<div class="wrapper">
-		<div class="topWrapper clearfix">
-			<div class="iconNetwork clearfix">
-				<img src="{{ asset('bundles/prayerlabsmyprofile/images/network-indicator.png') }}" alt="Network Indicator" />
-			</div>
-			<div class="time clearfix">
-				<h2>4:20 PM</h2>
-			</div>
-			<div class="lockCharge clearfix">
-			  	<img src="{{ asset('bundles/prayerlabsmyprofile/images/lock.png') }}" alt="Lock" />
-				<img src="{{ asset('bundles/prayerlabsmyprofile/images/charge-indicator.png') }}" alt="Chrage Indicator" />
-			</div>
-		</div>
-		<div class="mainWrapper clearfix">
-			<img class="logo" src="{{ asset('bundles/prayerlabsmyprofile/images/logo.png') }}" alt="Logo" />
-			<form id="loginForm" method="post" action="{{ path('prayerlabs_validate') }}" accept-charset="utf-8">
-			{% for flashMessage in app.session.flashbag.get('notice') %}
-			  <div style="color: #D8000C;background-color: #FFBABA;">
-				  {{ flashMessage }}
-			  </div>
-			{% endfor %}
-			<p><input type="email" name="login" placeholder="Email" id="email"/></p> 
-			<p><input type="password" name="password" placeholder="Password" id="password"/></p>   
-			<p><a class="logIn" href="javascript:void(0);" onclick="javascript:$('form#loginForm').submit();">Log In</a></p>
-			</form>
-			<p class="sign clearfix"><a href="#">Sign Up</a></p>
-		</div>
-	</div>
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-</body>
-</html>
+{% extends 'PrayerlabsMyprofileBundle::layout.html.twig' %}
+{% block body %}
+<div class="mainWrapper clearfix">
+        <img class="logo" src="{{ asset('bundles/prayerlabsmyprofile/images/logo.png') }}" alt="Logo" />
+        <form id="loginForm" method="post" action="{{ path('prayerlabs_validate') }}" accept-charset="utf-8">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+          <div style="color: #D8000C;background-color: #FFBABA;">
+                  {{ flashMessage }}
+          </div>
+        {% endfor %}
+        <p><input type="email" name="login" placeholder="Email" id="email"/></p> 
+        <p><input type="password" name="password" placeholder="Password" id="password"/></p>   
+        <p><a class="logIn" href="javascript:void(0);" onclick="javascript:$('form#loginForm').submit();">Log In</a></p>
+        </form>
+        <p class="sign clearfix"><a href="#">Sign Up</a></p>
+</div>
+{% endblock %}

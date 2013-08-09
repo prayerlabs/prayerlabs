@@ -5,3 +5,7 @@ services:
 #    prayerlabs_myprofile.example:
 #        class: %prayerlabs_myprofile.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    prayerlabs.twig.my_extension:
+        class: Prayerlabs\MyprofileBundle\Twig\MyExtension
+        tags:
+            - { name: twig.extension }

@@ -674,4 +674,60 @@ class Accounts
     {
         return $this->freequency;
     }
+    /**
+     * @var string
+     */
+    private $small_pic_name;
+
+    /**
+     * @var string
+     */
+    private $bg_pic_name;
+
+
+    /**
+     * Set small_pic_name
+     *
+     * @param string $smallPicName
+     * @return Accounts
+     */
+    public function setSmallPicName($smallPicName)
+    {
+        $this->small_pic_name = $smallPicName;
+    
+        return $this;
+    }
+
+    /**
+     * Get small_pic_name
+     *
+     * @return string 
+     */
+    public function getSmallPicName()
+    {
+        return $this->small_pic_name;
+    }
+
+    /**
+     * Set bg_pic_name
+     *
+     * @param string $bgPicName
+     * @return Accounts
+     */
+    public function setBgPicName($bgPicName)
+    {
+        $this->bg_pic_name = $bgPicName;
+    
+        return $this;
+    }
+
+    /**
+     * Get bg_pic_name
+     *
+     * @return string 
+     */
+    public function getBgPicName()
+    {
+        return $this->bg_pic_name;
+    }
 }

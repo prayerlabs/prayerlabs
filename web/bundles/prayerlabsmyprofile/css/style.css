@@ -96,18 +96,23 @@ table {
 .mainWrapper{
 	background: #fc6238;
 }
+.editProfileBack{
+	background: #fff;
+}
 .logo{
 	display: block;
 	margin: 140px auto 50px auto;
 }
-#loginForm{}
-#email, #regEmail, #regPassword, #name, #community{
+#email, #regEmail, #regPassword, #name, #community, #address{
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border: none;
 }
-#regEmail, #regPassword, #community{
-	margin-top: -2px !important;
+#regEmail, #regPassword, #community, #address{
+	margin-top: -4px !important;
+}
+#loginForm label[for="addPhoto"]{
+	font: 14px Arial;
 }
 #password{
 	border-top: 1px solid #ddd !important;
@@ -115,12 +120,12 @@ table {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-#community{
+#address{
 	border: none;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-#email, #regEmail, #regPassword, #password, .logIn, #name, #community{
+#email, #regEmail, #regPassword, #password, .logIn, #name, #community, #address{
 	height: 80px;
 	padding: 10px;
 	display: block;
@@ -174,20 +179,20 @@ table {
 	font-size: 30px;
 	font-weight: bold;
 }
-.authorWrapper{
+.authorWrapper, .postTopWrapper{
 	background: #fc6238;
 	height: 65px;
 }
-.authorWrapper img{
+.authorWrapper img, .postTopWrapper img{
 	float: left;
 	margin-left: 10px;
 	margin-top: 10px;
 }
-.authorName{
+.authorName, .postName{
 	float: left;
 	margin: 15px auto;
 }
-.authorName h2{
+.authorName h2, .postName h2{
 	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 	line-height: 40px;
 	font-weight: bold;
@@ -337,4 +342,178 @@ table {
 #commentForm input[type="submit"], #commentForm input[type="reset"]{
 	display: inline;
 	padding: 3px 10px;
+}
+.postWrapper{
+	background: #e3e2e2;
+}
+#addPost{}
+#postContent{
+	margin: 0px auto;
+	padding: 10px;
+	font-size: 16px;
+	color: #969696;
+}
+.formTopButton{}
+.viewTo, .addPhoto{
+	background: #f3f3f3;
+	display: inline-block;
+	padding: 15px;
+	border: 1px solid #d4d4d4;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: #a9a9a9;
+	text-align: center;
+	font-size: 18px;
+}
+.downArraw{
+	vertical-align: middle;
+}#postSubmit{
+	background: #fc6238;
+	display: block;
+	padding: 10px;
+	text-align: center;
+	height: 50px;
+	margin: 15px auto;
+	font-size: 30px;
+	line-height: 0px;
+	color: #fff;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	border: 1px solid #e3370b;
+	border-radius: 8px;
+}
+.postButton{
+	background: #6a737f;
+	padding: 10px 3px 3px 3px; 
+}
+.postButton input[type="submit"]{
+	width: 50px;
+	height: 75px;
+	font-size: 30px;
+	font-weight: bold;
+	border-radius: 8px;
+	border: none;
+	margin-bottom: 20px;
+	margin-right: 15px;
+	text-align: center;
+	box-shadow: 0px 3px 10px #383c41;
+}
+.buttonColumnFirst {
+	width: 705px;
+	margin: auto;
+}
+.buttonColumnSecond{
+	margin: auto;
+}
+.buttonColumnThird{
+	margin: -25px auto;
+}
+.buttonColumnFourth{
+	margin: auto;	
+}
+.buttonMidium{
+	background: #6f7886;
+	width: 72px !important;
+	color: #fff;
+}
+.buttonUpArrow{
+	position: relative;
+	right: 15px;
+	top: 30px;
+	cursor: default;
+	box-shadow: 0px 3px 10px #383c41;
+	border-radius: 10px;
+}
+.buttonCross{
+	cursor: default;
+	box-shadow: 0px 3px 10px #383c41;
+	border-radius: 10px;
+}
+.buttonSpace{
+	width: 250px !important;
+	background: #c4c7c9;
+	color: #525c69;
+}
+.buttonReturn{
+	width: 150px !important;
+}
+.buttonUpArrow, .buttonCross, .buttonSpeaker{
+	
+}
+.buttonSpeaker{
+	position: relative;
+	top: 30px;
+	right: 5px;
+	cursor: default;
+	box-shadow: 0px 3px 10px #383c41;
+	border-radius: 10px;
+	height: 78px;
+}
+/* Edit Profile */
+#editProfile{
+	margin: 20px auto;
+}
+#editProfile label{
+	display: block;
+	margin-bottom: 15px;
+	font-family: Arial, Tahoma, Times;
+	font-size: 15px;
+}
+#editProfile [name="lastName"]{
+	display: block;
+}
+#editProfile h3{
+	font-size: 18px;
+	font-family: Arial, Tahoma, Times;
+	line-height: 60px;
+	color: #666;
+}
+#editProfile input[type="checkbox"]{
+	margin-right: 15px;
+	margin-bottom: 10px;;
+}
+#editName{
+	height: 30px;
+	padding: 2px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+#editEmail, #editPassword{
+	height: 30px;
+	padding: 2px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+#editPassword{
+	margin-left: 70px;
+}
+#photo{
+	margin-left: 52px;
+}
+#cover{
+	margin-left: 54px;
+}
+#logout{}
+#delete{}
+#comments{}
+#bless{}
+#invited{}
+#request{}
+#accept{}
+#save, #cancel{
+	width: 120px;
+	height: 40px;
+	border-radius: 5px;
+	background: #fc572d;
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	border: 2px solid #e3370b;
+	margin-top: 20px;
+	text-align: center;
+}
+.buttonSet{
+	width: 246px;
+	margin: auto;
 }

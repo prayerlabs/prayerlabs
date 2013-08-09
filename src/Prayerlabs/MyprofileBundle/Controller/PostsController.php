@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Prayerlabs\MyprofileBundle\Entity\Posts;
 use Prayerlabs\MyprofileBundle\Entity\Comments;
+use Prayerlabs\MyprofileBundle\Entity\Prayed;
 use Prayerlabs\MyprofileBundle\Form\PostsType;
 use Prayerlabs\MyprofileBundle\Entity\Accounts;
 
@@ -53,12 +54,14 @@ class PostsController extends Controller
             
             $em->persist($entity);
             $em->flush();
-
-            return new Response("true");
+            return $this->redirect($this->generateUrl('prayerlabs_profile'));
+            //return new Response("true");
+            
         }
         else
         {
-            return new Response("false");   
+           // return new Response("false");
+           return $this->redirect($this->generateUrl('prayerlabs_posts_add'));
         }
         /*
         $entity  = new Posts();
@@ -93,7 +96,16 @@ class PostsController extends Controller
             'form'   => $form->createView(),
         ));
     }
-
+    
+    /**
+     * Displays a form to create a new Posts entity.
+     *
+     */
+    public function addAction()
+    {
+        return $this->render('PrayerlabsMyprofileBundle:Posts:add.html.twig');
+    }
+    
     /**
      * Finds and displays a Posts entity.
      *
@@ -141,7 +153,32 @@ class PostsController extends Controller
         return new Response("true");
 		
 	}
-    /**
+       
+/**
+	 * Saves the comment 
+	 */
+	public function savePrayAction(Request $request)
+	{
+		$postId      = $request->get('postId');
+		$session     = $request->getSession();
+                $user        = $session->get('user');        
+		
+		$em = $this->getDoctrine()->getManager();
+
+                $prayed = new Prayed();
+		
+		$user_entity = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->find($user->getId());
+		$post_entity = $em->getRepository('PrayerlabsMyprofileBundle:Posts')->find($postId);
+                
+                $prayed->setAccounts($user_entity);
+                $prayed->setPosts($post_entity);
+
+		$em->persist($prayed);
+		$em->flush();
+
+                return new Response("true");
+		
+	}    /**
      * Displays a form to edit an existing Posts entity.
      *
      */
