@@ -125,7 +125,7 @@ table {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-#email, #regEmail, #regPassword, #password, .logIn, #name, #community, #address{
+#email, #regEmail, #regPassword, #password, .logIn, #name, #community, #address, .fancyBox{
 	height: 80px;
 	padding: 10px;
 	display: block;

@@ -11,19 +11,13 @@ class AccountsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('place')
-            ->add('works_at')
+            ->add('name','text')
+            ->add('place', 'text')
+            ->add('works_at','text')
             ->add('email')
-            ->add('password')
-            ->add('salt')
-            ->add('enabled')
-            ->add('last_login')
-            ->add('token')
-            ->add('verification_requested_at')
-            ->add('password_requested_at')
-            ->add('created_at')
-            ->add('created_from_system')
+            ->add('password','password')
+            ->add('photo', 'file', array('mapped'=>false))
+            
         ;
     }
 

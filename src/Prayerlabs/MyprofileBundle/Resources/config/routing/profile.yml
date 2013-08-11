@@ -1,3 +1,6 @@
 prayerlabs_profile:
     pattern:  /
     defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:index" }
+prayerlabs_profile_signup:
+    pattern:  /signup
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:signUp" }

@@ -27,6 +27,7 @@ Prayerlabs\MyprofileBundle\Entity\Accounts:
       length: 255
     enabled:
       type: boolean
+      default: 1
     last_login:
       type: datetime
       nullable: true
@@ -44,14 +45,17 @@ Prayerlabs\MyprofileBundle\Entity\Accounts:
     small_pic_name:
       type: string
       length: 255
+      nullable: true
     bg_pic_name:
       type: string
       length: 255
+      nullable: true
     created_at:
       type: datetime
       nullable: true
     created_from_system:
       type: integer
+      nullable: true
   oneToMany:
     systems:
       targetEntity: Systems

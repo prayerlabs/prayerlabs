@@ -1,0 +1,37 @@
+{% extends 'PrayerlabsMyprofileBundle::layout.html.twig' %}
+{% block title %}Signup{% endblock %}
+{% block body %}
+    <div class="mainWrapper clearfix">
+            <img class="logo" src="{{ asset('bundles/prayerlabsmyprofile/images/logo.png') }}" alt="Logo" />
+            <form id="signUpForm" name="signUpForm" action="" method="POST" accept-charset="utf-8" {{ form_enctype(form)}}>
+                <p>{{ form_errors(form) }}</p>
+                <p>
+                    {{ form_widget(form.name, {'attr': {'placeholder':'Name', 'class':'fancyBox'} } ) }}
+                </p>
+                <p>
+                    {{ form_widget(form.email, {'attr': {'placeholder':'Email', 'class':'fancyBox'} } ) }}
+                </p>
+                <p>
+                    {{ form_widget(form.password, {'attr': {'placeholder':'Password', 'class':'fancyBox'} } ) }}
+                </p>
+                <p>
+                    {{ form_widget(form.works_at, {'attr': {'placeholder':'Community', 'class':'fancyBox'} } ) }}
+                </p>	
+                <p>
+                    {{ form_widget(form.place, {'attr': {'placeholder':'Place', 'class':'fancyBox'} } ) }}
+                </p>
+                <p>
+                    <label for="photo">Choose Profile Photo</label>
+                    {{ form_widget(form.photo, {'attr': {'placeholder':'Photo', 'class':'fancyBox'} } ) }}
+                </p>
+                <p class="signButtons">
+                    <input class="register" type="submit" value="Register"/> 
+                    <input class="cancel" type="reset" value="Cancel"/>
+                </p>
+                {{ form_rest(form) }}
+            </form>
+            <p class="sign clearfix">
+                <a href="{{ path('prayerlabs_login') }}">Log In</a>
+            </p>
+    </div>
+{% endblock %}

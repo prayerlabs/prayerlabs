@@ -135,26 +135,25 @@ class PostsController extends Controller
 		$postId      = $request->get('postId');
 		$commentText = $request->get('comment');
 		$session     = $request->getSession();
-        $user        = $session->get('user');        
+                $user        = $session->get('user');        
 		
 		$em = $this->getDoctrine()->getManager();
 
-        $comment = new Comments();
+                $comment = new Comments();
 		
 		$user_entity = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->find($user->getId());
 		$post_entity = $em->getRepository('PrayerlabsMyprofileBundle:Posts')->find($postId);
-        $comment->setAccounts($user_entity);
-        $comment->setPosts($post_entity);
+                $comment->setAccounts($user_entity);
+                $comment->setPosts($post_entity);
 
 		$comment->setDescription($commentText);
 		$em->persist($comment);
 		$em->flush();
 
-        return new Response("true");
-		
+                return new Response("true");		
 	}
        
-/**
+        /**
 	 * Saves the comment 
 	 */
 	public function savePrayAction(Request $request)
@@ -176,9 +175,9 @@ class PostsController extends Controller
 		$em->persist($prayed);
 		$em->flush();
 
-                return new Response("true");
-		
-	}    /**
+                return new Response("true");		
+	}    
+    /**
      * Displays a form to edit an existing Posts entity.
      *
      */
