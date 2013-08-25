@@ -19,4 +19,13 @@ prayerlabs_profile_email_verification:
 prayerlabs_profile_thanks:
     pattern:  /thanks
     defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:thanks" }
-    
+
+prayerlabs_profile_send_delete_request:
+    pattern:  /send_delete_request
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:sendRequestToDeleteProfile" }
+prayerlabs_profile_remove_profile:
+    pattern:  /remove_profile
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:removeAllData" }
+prayerlabs_profile_delete:
+    pattern:  /delete
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:delete" }

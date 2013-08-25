@@ -1,0 +1,12 @@
+{% extends 'PrayerlabsMyprofileBundle::layout.html.twig' %}
+{% block title %}Confirm Delete{% endblock %}
+{% block body %}
+    <div class="mainWrapper clearfix">
+        <img class="logo" src="{{ asset('bundles/prayerlabsmyprofile/images/logo.png') }}" alt="Logo" />
+        <form id="confirmDelete" name="confirmDelete" action="{{ path('prayerlabs_profile_delete') }}" method="POST" accept-charset="utf-8" {{ form_enctype(form)}}>
+                <p class="signButtons">
+                    <input class="register" type="submit" value="Confirm Delete" /><br /><br /><br /><br />
+                </p>
+        </form>            
+    </div>
+{% endblock %}

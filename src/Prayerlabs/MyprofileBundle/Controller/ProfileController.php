@@ -104,7 +104,58 @@ class ProfileController extends Controller
                         ;
                 $this->get('mailer')->send($message);
     }
-
+    
+    public function sendRequestToDeleteProfileAction(Request $request)
+    {
+        $user = $this->getRequest()->getSession()->get('user');
+        $email = $user->getEmail();
+        $message = \Swift_Message::newInstance()
+                            ->setSubject("Account deletion confirmation")
+                            ->setFrom("info@prayerlabs.com")
+                            ->setTo($email)
+                            ->setBody( $this->renderView(
+                                    'MyprofileBundle:Profile:account_delete.html.twig'
+                                )) ;
+        $this->get('mailer')->send($message);
+    }
+    public function removeAllDataAction(Request $request)
+    {
+        if(!$this->preExecute())
+        {
+            return 
+                $this->redirect($this->generateUrl('prayerlabs_login')."?redirect_url=".$request->getRequestUri());
+        }
+        
+        return 
+            $this->render('PrayerlabsMyprofileBundle:Profile:confirmDeleteData.html.twig');
+    }
+    
+    public function deleteAction(Request $request)
+    {
+        if(!$this->preExecute())
+        {
+            return 
+                $this->redirect($this->generateUrl('prayerlabs_login'));
+        }
+        
+        if($request->getMethod()=='POST')
+        {
+            $em      = $this->getDoctrine()->getManager();
+            $user    = $request->getSession()->get('user');
+            $id      = $user->getId();
+            $account = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->findOneBy(array('id' => $id));
+            $em->remove($account);
+            $em->flush();
+            $request->getSession()
+                            ->getFlashBag()
+                            ->add('notice','Your Account deleted successfully!');
+             return 
+                $this->redirect($this->generateUrl('thanks'));
+        }
+         return 
+            $this->redirect($this->generateUrl('prayerlabs_login'));
+    }
+    
     public function logoutAction()
     {
         $session = $this->getRequest()->getSession();
