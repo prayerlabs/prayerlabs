@@ -1,6 +1,6 @@
 prayerlabs_myprofile_login:
     resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/login.yml"
-    prefix: /login/
+    prefix: /
 
 prayerlabs_myprofile_profile:
     resource: "@PrayerlabsMyprofileBundle/Resources/config/routing/profile.yml"

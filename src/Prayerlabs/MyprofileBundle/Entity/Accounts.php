@@ -730,4 +730,12 @@ class Accounts
     {
         return $this->bg_pic_name;
     }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setVerificationToken()
+    {
+        $this->token = md5(time());
+    }
 }

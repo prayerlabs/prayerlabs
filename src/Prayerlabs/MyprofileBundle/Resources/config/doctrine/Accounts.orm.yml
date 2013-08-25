@@ -77,4 +77,4 @@ Prayerlabs\MyprofileBundle\Entity\Accounts:
       mappedBy: accounts
       cascade: ["persist", "merge"]
   lifecycleCallbacks:
-    prePersist: [ setEnabledValue, setSaltValue, setCreatedAtValue, setPasswordValue ]
+    prePersist: [ setEnabledValue, setSaltValue, setCreatedAtValue, setPasswordValue, setVerificationToken ]

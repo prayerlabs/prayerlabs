@@ -6,7 +6,8 @@ use Prayerlabs\MyprofileBundle\Entity\Accounts;
 use Prayerlabs\MyprofileBundle\Entity\Posts;
 use Prayerlabs\MyprofileBundle\CustomClass\Utility;
 use Prayerlabs\MyprofileBundle\Form\AccountsType;
-
+use Prayerlabs\MyprofileBundle\Form\AccountsEditType;
+use Prayerlabs\MyprofileBundle\Form\AccountsChangePasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,6 +16,8 @@ class ProfileController extends Controller
 {
     public function indexAction()
     {
+        if(!$this->preExecute())
+            return $this->redirect($this->generateUrl('prayerlabs_login'));
     	$session = $this->getRequest()->getSession();
     	$user    = $session->get('user');
 
@@ -59,7 +62,17 @@ class ProfileController extends Controller
                 $file->move('uploads/author/'.$account->getId(), $filename);
                 
                 $account->setSmallPicName($filename);
+                $account->setEnabled(0);
+               
                 $em->flush();
+                /*
+                 *  code to send verification email
+                 */
+                $email   = $form['email']->getData();
+                $name    = $form['name']->getData();
+                $token   = $account->getToken();
+                
+                $this->verifyEmail($email, $name, $token);
                 
                 return 
                     $this->redirect($this->generateUrl('prayerlabs_login'));
@@ -68,5 +81,153 @@ class ProfileController extends Controller
         return 
                 $this->render('PrayerlabsMyprofileBundle:Profile:signup.html.twig', 
                                 array('form' => $form->createView()));
+    }
+    
+    protected function verifyEmail($email, $name, $token)
+    {
+                $verification_url   = $this->container->getParameter('verification_url');
+                $verification_email_subject = $this->container->getParameter('verification_email_subject');
+                $from_email   = $this->container->getParameter('from_email');
+                
+                $url     = str_replace("{{token}}", $token, $verification_url);
+                $url     = str_replace("{{email}}", $email, $url);
+                $message = \Swift_Message::newInstance()
+                            ->setSubject($verification_email_subject)
+                            ->setFrom($from_email)
+                            ->setTo($email)
+                            ->setBody(
+                                $this->renderView(
+                                    'MyprofileBundle:Login:email.html.twig',
+                                    array('name' => $name, 'url' => $url)
+                                )
+                            )
+                        ;
+                $this->get('mailer')->send($message);
+    }
+
+    public function logoutAction()
+    {
+        $session = $this->getRequest()->getSession();
+        $session->clear();
+        $session->invalidate();      
+        
+        return 
+           $this->redirect($this->generateUrl('prayerlabs_login'));
+    }
+    
+    public function editProfileAction(Request $request)
+    {
+        if(!$this->preExecute())
+            return $this->redirect($this->generateUrl('prayerlabs_login'));
+        
+        $em      = $this->getDoctrine()->getManager();
+        $user    = $request->getSession()->get('user');
+        $id      = $user->getId();
+        $account = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->findOneBy(array('id' => $id));
+        $form    = $this->createForm(new AccountsEditType(), $account);
+        
+        if($request->getMethod()=='POST')
+        {
+            $form->handleRequest($request);
+            if($form->isValid())
+            {
+                $em->persist($account);
+                if($user->getEmail()!=$form['email']->getData())
+                {
+                    $account->setEnabled(0);
+                    $request->getSession()
+                            ->getFlashBag()
+                            ->add('notice','Please verify new email.');
+                }
+                $file = $form['photo']->getData();
+                $fileLarge = $form['photo_large']->getData();
+                if($file->isValid())
+                {
+                // compute a random name and try to guess the extension (more secure)
+                $extension = $file->getClientOriginalExtension();
+                if (!$extension) {
+                    // extension cannot be guessed
+                    $extension = 'bin';
+                }
+                $randomNumber  = rand(1, 99999);
+                $filename      = $randomNumber.'.'.$extension;
+                
+                if(!file_exists('uploads/author/'.$account->getId()))
+                    mkdir ('uploads/author/'.$account->getId(), 0777);
+                
+                $file->move('uploads/author/'.$account->getId(), $filenameLarge);
+                $file->move('uploads/author/'.$account->getId(), $filename);
+                
+                $account->setSmallPicName($filename);
+                }
+                
+                if($fileLarge->isValid())
+                {
+                // compute a random name and try to guess the extension (more secure)
+                $extension = $fileLarge->getClientOriginalExtension();
+                if (!$extension) {
+                    // extension cannot be guessed
+                    $extension = 'bin';
+                }
+               $filenameLarge = $randomNumber.'_large.'.$extension;
+                
+                if(!file_exists('uploads/author/'.$account->getId()))
+                    mkdir ('uploads/author/'.$account->getId(), 0777);
+                
+                $fileLarge->move('uploads/author/'.$account->getId(), $filenameLarge);
+                
+                $account->setBgPicName($filenameLarge);
+                }
+               
+                $em->flush();
+                
+                return 
+                    $this->redirect($this->generateUrl('prayerlabs_profile'));
+            }
+        }
+        return 
+                $this->render('PrayerlabsMyprofileBundle:Profile:edit.html.twig', 
+                                array('form' => $form->createView()));
+    }
+    
+    public function changePasswordAction(Request $request)
+    {
+        if(!$this->preExecute())
+            return $this->redirect($this->generateUrl('prayerlabs_login'));
+                
+        $form    = $this->createForm(new AccountsChangePasswordType());
+        
+        if($request->getMethod()=='POST')
+        {
+            $form->handleRequest($request);
+            if($form->isValid())
+            {
+                $em      = $this->getDoctrine()->getManager();
+                $user    = $request->getSession()->get('user');
+                $id      = $user->getId();
+                $account = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->findOneBy(array('id' => $id));
+                
+                $data = $form->getData();
+                $password = $data['password'];
+                
+                $account->setPassword(md5('XvMpa12!'.$password));
+                $request->getSession()
+                            ->getFlashBag()
+                            ->add('notice','Password updated successfully.');    
+                $em->flush();
+                return 
+                    $this->redirect($this->generateUrl('prayerlabs_profile'));
+            }
+        }
+        return 
+                $this->render('PrayerlabsMyprofileBundle:Profile:change_password.html.twig', 
+                                array('form' => $form->createView()));
+    }
+    
+    protected function preExecute()
+    {
+        //var_dump($this->getRequest()->getSession()->has('user')); exit;
+        return $this->getRequest()->getSession()->has('user');
+        
     }
 }

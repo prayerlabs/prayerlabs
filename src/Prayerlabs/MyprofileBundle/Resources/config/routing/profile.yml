@@ -4,3 +4,12 @@ prayerlabs_profile:
 prayerlabs_profile_signup:
     pattern:  /signup
     defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:signUp" }
+prayerlabs_profile_edit:
+    pattern:  /editProfile
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:editProfile" }
+prayerlabs_profile_logout:
+    pattern:  /logout
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:logout" }
+prayerlabs_profile_change_password:
+    pattern:  /changePassword
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:changePassword" }
