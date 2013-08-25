@@ -124,6 +124,7 @@ class ProfileController extends Controller
         $user    = $request->getSession()->get('user');
         $id      = $user->getId();
         $account = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->findOneBy(array('id' => $id));
+        
         $form    = $this->createForm(new AccountsEditType(), $account);
         
         if($request->getMethod()=='POST')
@@ -138,6 +139,9 @@ class ProfileController extends Controller
                     $request->getSession()
                             ->getFlashBag()
                             ->add('notice','Please verify new email.');
+                    $token = md5(time());
+                    $account->setToken($token);
+                    $this->verifyEmail($account->getEmail(), $account->getName(), $token);                    
                 }
                 $file = $form['photo']->getData();
                 $fileLarge = $form['photo_large']->getData();
@@ -224,10 +228,38 @@ class ProfileController extends Controller
                                 array('form' => $form->createView()));
     }
     
+    public function profileVerifyAction(Request $request)
+    {
+        $email = $request->get('email');
+        $token = $request->get('token');
+        
+        $em = $this->getDoctrine()->getManager();
+        $account = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->findOneBy(array('email' => $email, 'token' => $token));
+        if($account)
+        {
+            $account->setEnabled(1);
+            $request->getSession()->getFlashBag()
+                    ->add('notice', 'Your email has been verified successfully!');
+        }
+        else
+        {
+            $request->getSession()->getFlashBag()
+                    ->add('notice', 'Wrong token provided!');            
+        }
+        return 
+            $this->redirect($this->generateUrl('thanks'));
+    }
+    
+    public function thanksAction(Request $request)
+    {
+         return 
+            $this->render('PrayerlabsMyprofileBundle:Profile:thanks.html.twig');
+    }
     protected function preExecute()
     {
         //var_dump($this->getRequest()->getSession()->has('user')); exit;
-        return $this->getRequest()->getSession()->has('user');
+        return 
+            $this->getRequest()->getSession()->has('user');
         
     }
 }

@@ -13,3 +13,10 @@ prayerlabs_profile_logout:
 prayerlabs_profile_change_password:
     pattern:  /changePassword
     defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:changePassword" }
+prayerlabs_profile_email_verification:
+    pattern:  /profileVerify
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:profileVerify" }
+prayerlabs_profile_thanks:
+    pattern:  /thanks
+    defaults: { _controller: "PrayerlabsMyprofileBundle:Profile:thanks" }
+    

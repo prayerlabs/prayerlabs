@@ -1,0 +1,12 @@
+{% extends 'PrayerlabsMyprofileBundle::layout.html.twig' %}
+{% block title %}Thanks{% endblock %}
+{% block body %}
+    <div class="mainWrapper clearfix">
+        <img class="logo" src="{{ asset('bundles/prayerlabsmyprofile/images/logo.png') }}" alt="Logo" />
+        <p>
+       {% for flashMessage in app.session.flashbag.get('notice') %}
+        <h3>{{flashMessage}}</h3><br /><br /><br /><br />
+       {% endfor %}   
+        </p>
+    </div>
+{% endblock %}
