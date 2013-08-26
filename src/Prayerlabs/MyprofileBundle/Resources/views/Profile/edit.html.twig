@@ -5,7 +5,7 @@
     <div class="mainWrapper clearfix">
         <img class="logo" src="{{ asset('bundles/prayerlabsmyprofile/images/logo.png') }}" alt="Logo" />
             
-            <form id="editForm" name="editForm" action="" method="POST" accept-charset="utf-8" {{ form_enctype(form)}}>
+        <form id="editForm" name="editForm" action="" method="POST" accept-charset="utf-8" {{ form_enctype(form)}} novalidate="novalidate">
                 <p>{{ form_errors(form) }}</p>
                 <p>
                     {{ form_widget(form.name, {'attr': {'placeholder':'Name', 'class':'fancyBox'} } ) }}

@@ -15,8 +15,10 @@ class AccountsEditType extends AbstractType
             ->add('place', 'text')
             ->add('works_at','text')
             ->add('email')      
-            ->add('photo', 'file', array('mapped'=>false))          
-            ->add('photo_large', 'file', array('mapped'=>false))           
+            ->add('photo', 'file', array('mapped'=>false, 
+                'required' => false))          
+            ->add('photo_large', 'file', array('mapped'=>false, 
+                'required' => false))           
         ;
     }
 

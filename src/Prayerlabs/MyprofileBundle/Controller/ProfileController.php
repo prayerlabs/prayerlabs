@@ -97,12 +97,18 @@ class ProfileController extends Controller
                             ->setTo($email)
                             ->setBody(
                                 $this->renderView(
-                                    'MyprofileBundle:Login:email.html.twig',
+                                    'PrayerlabsMyprofileBundle:Login:email.html.twig',
                                     array('name' => $name, 'url' => $url)
                                 )
                             )
                         ;
+                try{
                 $this->get('mailer')->send($message);
+                }
+                catch(\Exception $e)
+                {
+                    
+                }
     }
     
     public function sendRequestToDeleteProfileAction(Request $request)
@@ -196,7 +202,8 @@ class ProfileController extends Controller
                 }
                 $file = $form['photo']->getData();
                 $fileLarge = $form['photo_large']->getData();
-                if($file->isValid())
+                                
+                if($file != NULL && $file->isValid())
                 {
                 // compute a random name and try to guess the extension (more secure)
                 $extension = $file->getClientOriginalExtension();
@@ -216,7 +223,7 @@ class ProfileController extends Controller
                 $account->setSmallPicName($filename);
                 }
                 
-                if($fileLarge->isValid())
+                if($fileLarge != NULL && $fileLarge->isValid())
                 {
                 // compute a random name and try to guess the extension (more secure)
                 $extension = $fileLarge->getClientOriginalExtension();
