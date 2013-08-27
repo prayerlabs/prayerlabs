@@ -185,7 +185,7 @@ class ProfileController extends Controller
         $user    = $request->getSession()->get('user');
         $id      = $user->getId();
         $account = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->findOneBy(array('id' => $id));
-        
+        $oldEmail = $account->getEmail();
         $form    = $this->createForm(new AccountsEditType(), $account);
         
         if($request->getMethod()=='POST')
@@ -194,7 +194,7 @@ class ProfileController extends Controller
             if($form->isValid())
             {
                 $em->persist($account);
-                if($account->getEmail()!=$form['email']->getData())
+                if($oldEmail!=$form['email']->getData())
                 {
                     $account->setEnabled(0);
                     $request->getSession()
