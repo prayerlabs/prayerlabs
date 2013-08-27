@@ -105,13 +105,14 @@ class ProfileController extends Controller
                                 ), 'text/html'
                             )
                         ;
-                try{
                 $this->get('mailer')->send($message);
+                /*
+                try{
                 }
                 catch(\Exception $e)
                 {
                     
-                }
+                }*/
     }
     
     public function sendRequestToDeleteProfileAction(Request $request)
@@ -205,7 +206,7 @@ class ProfileController extends Controller
                 }
                 $file = $form['photo']->getData();
                 $fileLarge = $form['photo_large']->getData();
-                                
+                $randomNumber  = rand(1, 999);       
                 if($file != NULL && $file->isValid())
                 {
                 // compute a random name and try to guess the extension (more secure)
@@ -214,13 +215,12 @@ class ProfileController extends Controller
                     // extension cannot be guessed
                     $extension = 'bin';
                 }
-                $randomNumber  = rand(1, 99999);
+                
                 $filename      = $randomNumber.'.'.$extension;
                 
                 if(!file_exists('uploads/author/'.$account->getId()))
                     mkdir ('uploads/author/'.$account->getId(), 0777);
                 
-                $file->move('uploads/author/'.$account->getId(), $filenameLarge);
                 $file->move('uploads/author/'.$account->getId(), $filename);
                 
                 $account->setSmallPicName($filename);
@@ -301,6 +301,8 @@ class ProfileController extends Controller
             $account->setEnabled(1);
             $request->getSession()->getFlashBag()
                     ->add('notice', 'Your email has been verified successfully!');
+            $em->persist($account);
+            $em->flush();
         }
         else
         {
@@ -308,7 +310,7 @@ class ProfileController extends Controller
                     ->add('notice', 'Wrong token provided!');            
         }
         return 
-            $this->redirect($this->generateUrl('thanks'));
+            $this->redirect($this->generateUrl('prayerlabs_profile_thanks'));
     }
     
     public function thanksAction(Request $request)

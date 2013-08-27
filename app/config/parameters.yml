@@ -14,7 +14,7 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     
     #### Parameters For Verification Email #### 
-    verification_url: http://localhost/prayerlabs/web/app_dev.php/profileVerify?token={{token}}&email={{email}}
+    verification_url: http://localhost/prayerlabs/web/app_dev.php/profile/profileVerify?token={{token}}&email={{email}}
     from_email:       info@prayerlabs.com
     verification_email_subject: Verification Email
     
