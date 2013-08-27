@@ -20,16 +20,16 @@ class ProfileController extends Controller
             return $this->redirect($this->generateUrl('prayerlabs_login'));
     	$session = $this->getRequest()->getSession();
     	$user    = $session->get('user');
-
+       
     	$em = $this->getDoctrine()->getManager();
-
+        $userLatest = $em->getRepository('PrayerlabsMyprofileBundle:Accounts')->findOneBy(array('id' => $user->getId()));
         $query = $em->createQuery(
                         'SELECT p, a FROM PrayerlabsMyprofileBundle:Posts p JOIN p.accounts a 
                             WHERE p.accounts = :account_id ORDER BY p.expires_at DESC')
                 ->setParameter('account_id', $user->getId());
         $posts = $query->getResult();
         
-        return $this->render('PrayerlabsMyprofileBundle:Profile:show.html.twig', array('user' => $user, 'posts' => $posts));
+        return $this->render('PrayerlabsMyprofileBundle:Profile:show.html.twig', array('user' => $userLatest, 'posts' => $posts));
     }
     
     public function signUpAction(Request $request)
@@ -194,7 +194,7 @@ class ProfileController extends Controller
             if($form->isValid())
             {
                 $em->persist($account);
-                if($user->getEmail()!=$form['email']->getData())
+                if($account->getEmail()!=$form['email']->getData())
                 {
                     $account->setEnabled(0);
                     $request->getSession()
@@ -245,7 +245,7 @@ class ProfileController extends Controller
                 }
                
                 $em->flush();
-                
+                $request->getSession()->set('user', $account);
                 return 
                     $this->redirect($this->generateUrl('prayerlabs_profile'));
             }
