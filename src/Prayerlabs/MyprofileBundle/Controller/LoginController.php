@@ -45,7 +45,7 @@ class LoginController extends Controller
 			}
 			else
 			{
-				$this->get('session')->getFlashBag()->add('notice','Invalid email id or password');
+				//$this->get('session')->getFlashBag()->add('notice','Invalid email id or password');
 				return $this->redirect($this->generateUrl("prayerlabs_login"));
 			}
 		}

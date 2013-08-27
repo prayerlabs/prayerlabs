@@ -56,6 +56,9 @@ class ProfileController extends Controller
                 }
                 $filename = rand(1, 99999).'.'.$extension;
                 
+                 if(!file_exists('uploads/author'))
+                    mkdir ('uploads/author', 0777);
+                 
                 if(!file_exists('uploads/author/'.$account->getId()))
                     mkdir ('uploads/author/'.$account->getId(), 0777);
                 
@@ -99,7 +102,7 @@ class ProfileController extends Controller
                                 $this->renderView(
                                     'PrayerlabsMyprofileBundle:Login:email.html.twig',
                                     array('name' => $name, 'url' => $url)
-                                )
+                                ), 'text/html'
                             )
                         ;
                 try{
